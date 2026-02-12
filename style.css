@@ -1,0 +1,160 @@
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Warm cozy background */
+    background-image: url("brown.avif");
+    background-size: cover;
+    background-position: center;
+
+    font-family: "Aldrich", sans-serif;
+    color: #4b2e2e;
+}
+
+/* Envelope Screen */
+#envelope-container {
+    text-align: center;
+    cursor: pointer;
+    color: #5a3b2e;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
+}
+
+#envelope {
+    width: 200px;
+    animation: pulse 2.8s infinite; /* slower = softer */
+    cursor: pointer;
+    filter: drop-shadow(0 10px 20px rgba(60,40,20,0.25));
+}
+
+/* Letter Screen */
+#letter-container {
+    display: none;
+    position: fixed;
+    inset: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+.letter-window {
+    width: 90vw;
+    max-width: 800px;
+    aspect-ratio: 3/2;
+    padding: 20px 20px 0 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    /* Makes the "window" feel like warm paper */
+    background-image: url("pixelpaper.png");
+    background-size: 100% 100%;   /* fills the window exactly */
+    background-repeat: no-repeat;
+    background-position: center;
+    image-rendering: pixelated;   /* keeps pixel art sharp */
+
+    border-radius: 12px;
+    gap: 1px;
+    padding-top: 180px;
+
+    transform: scale(1.2);
+    opacity: 0;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.letter-window.open {
+    transform: scale(1);
+    opacity: 1;
+}
+
+h1 {
+    font-size: 30px;
+    margin: 0;
+    color: #4b2e2e;
+}
+
+p {
+    font-size: 32px;
+}
+
+/* Cat */
+.cat {
+    width: 210px;   /* was 250px */
+    margin: 10px 0;
+    transition: width 0.4s ease;
+}
+
+
+.letter-window.final .cat {
+    width: 180px;
+}
+
+/* Buttons */
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    position: relative;
+}
+
+.no-wrapper {
+    position: relative;
+}
+
+.btn {
+    width: 120px;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.btn:hover {
+    transform: scale(1.08);
+    filter: brightness(1.05);
+}
+
+.yes-btn,
+.no-btn {
+    width: 120px;
+    height: auto;
+    display: inline-block;
+}
+
+.yes-btn {
+    position: relative;
+    z-index: 2;
+}
+
+.no-btn {
+    z-index: 1;
+    position: relative;
+    cursor: default;
+}
+
+/* Final message box */
+.final-text {
+    font-size: 22px;
+    line-height: 1.4;
+    text-align: center;
+    display: inline-block;
+
+    padding: 14px 22px;
+
+    /* Warm paper card effect */
+    background-color: rgba(255, 248, 240, 0.92);
+    border: 2px solid #c8a27a;
+    border-radius: 14px;
+
+    color: #4b2e2e;
+
+    box-shadow: 0 8px 20px rgba(60,40,20,0.18);
+}
